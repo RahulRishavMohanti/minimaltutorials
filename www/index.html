@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Blank App</title>
+    <style type="text/css">
+    	.main{
+    		width: auto;
+    		height:40%;
+    		border-radius: 5px;
+    		background-color: lightgrey;
+			margin: auto;
+			text-align: center;
+			padding-top: 10px;
+			padding-bottom: 10px;
+    	}
+    	input{
+    		width:20%;
+    		margin:auto;
+    	}
+    </style>
+    </head>
+
+<body onload="myFunc()">
+<div class="main">
+<input type="text" id="Pre" onblur="fillStuff()">
+<input type="text" id="Middle">
+<input type="text" id="Last">
+<div id="scoreBoard"></div>
+<button onclick="ScoreMe()">Score Me</button>
+<button onclick="myFunc()">Next</button>
+</div>
+<script type="text/javascript">
+	var i;
+	var score = 0;
+	var words = ["clinic","render","yummy","throat","civic","ridor","toilet","cardiac","museum","comic","berob","erase","typist"];
+	var c;
+	function myFunc()
+	{	
+		i = getRandomArbitrary(0,9); 
+		console.log(i);
+		document.getElementById("Middle").value=words[i].substring(1, (words[i].length-1));
+		c=words[i].charAt(0);
+	}
+	function getRandomArbitrary(min, max) 
+	{
+  		return Math.round(Math.random() * (max - min) + min);
+	}
+	function ScoreMe() {
+		document.getElementById("scoreBoard").innerHTML=score;
+	}
+	function fillStuff(){
+		document.getElementById("Last").value=document.getElementById("Pre").value;
+		if(document.getElementById("Last").value==c)
+		{
+			score++;
+		}
+	}
+</script>
+    </body>
+</html>
